@@ -1,1 +1,119 @@
-<p>vehicles works!</p>
+<div class="container">
+
+    <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)" >
+    <i class="fa fa-user"></i>Add New vehicle</button>
+    </div>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Plate Num</th>
+      <th>Model</th>
+      <th>Brand</th>
+      <th>Millage</th>
+      <th>AC</th>
+      <th>Transmission</th>
+      <th>Start Type</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let vehicle of vehicles">
+      <td><span>{{vehicle.plateNum}}</span></td>
+      <td><span>{{vehicle.model}}</span></td>
+      <td><span>{{vehicle.brand}}</span></td>
+      <td><span>{{vehicle.millage}}</span></td>
+      <td><span>{{vehicle.ac}}</span></td>
+      <td><span>{{vehicle.transmission}}</span></td>
+      <td><span>{{vehicle.starttype}}</span></td>
+      <td><span>{{vehicle.type}}</span></td> 
+      <td>
+        <button class="btn btn-sm btn-warning">
+        <i class="fa fa-edit"></i>Edit</button>
+        <button class="btn btn-sm btn-danger">
+        <i class="fa fa-remove"></i>Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Vehicle</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate >
+
+      <div class="form-group">
+        <label for="plateNum">Plate Number</label>
+        <div class="input-group">
+          <input id="plateNum" name="plateNum"  class="form-control" ngModel >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="model">Model</label>
+        <div class="input-group">
+          <input id="model"  name="model" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <div class="input-group">
+          <input id="brand"  name="brand" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="millage">Millage</label>
+        <div class="input-group">
+          <input id="millage"  name="millage" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ac">AC (Have / No)</label>
+        <div class="input-group">
+          <input id="ac" name="ac" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="transmission">Transmission</label>
+        <div class="input-group">
+          <input id="transmission"  name="transmission" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="starttype">Start Type</label>
+        <div class="input-group">
+          <input id="starttype"  name="starttype" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Bike Type</label>
+        <div class="input-group">
+          <input id="type"  name="type" class="form-control" ngModel>
+        </div>
+      </div>
+
+      <div class="border text-center">
+        <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
+
